@@ -5,10 +5,14 @@ class Solution {
         }
 
         StringBuilder result = new StringBuilder();
-        int position = 0;         // 0 = closed, 5 = fully open
-        boolean isMoving = false;   // whether door is currently moving
-        boolean isOpening = true;   // direction: true=open, false=close
-        boolean isPaused = false;   // paused state
+        // 0 = closed, 5 = fully open
+        int position = 0;  
+        // whether door is currently moving
+        boolean isMoving = false;   
+        // direction: true=open, false=close
+        boolean isOpening = true; 
+        // paused state  
+        boolean isPaused = false;   
 
         for (int i = 0; i < events.length(); i++) {
             char event = events.charAt(i);
@@ -23,7 +27,8 @@ class Solution {
                 if (!isMoving) {
                     // Start moving
                     isMoving = true;
-                    isOpening = (position == 0); // if closed, open; if open, close
+                     // if closed, open; if open, close
+                    isOpening = (position == 0);
                     isPaused = false;
                 } else {
                     // Toggle pause/resume
@@ -31,7 +36,7 @@ class Solution {
                 }
             }
 
-            // Update position immediately if moving and not paused
+            // position immediately if moving and not paused
             if (isMoving && !isPaused) {
                 if (isOpening) {
                     position = Math.min(5, position + 1);
@@ -56,6 +61,6 @@ class Solution {
     public static void main(String[] args) {
         String input = "..P...O.....";
         String output = consumeDoorEvents(input);
-        System.out.println(output); // Expected: 001234321000
+        System.out.println(output); 
     }
 }
